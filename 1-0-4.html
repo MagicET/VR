@@ -18,16 +18,8 @@
     -->
   </head>
   <body>
-    <input type="file" id="file" onchange="showVR()"/>
-        
-    <a-assets>
-      <img id="sea" src="sea_360.jpg">
-    </a-assets>
-    
-    <a-scene>
-      <a-sky id="image-360" radius="10" src="sea_360.jpg"></a-sky>
-    </a-scene>
-    
+    <input type="file" id="file" accept="image/png, image/jpeg" onchange="showVR()"/>
+
     <script>
     	function showVR() {
             let scene = document.createElement('a-scene');
