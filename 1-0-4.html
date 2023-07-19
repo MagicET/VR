@@ -2,14 +2,43 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    
+    <title>カスタム画像VR</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="カスタム画像VR">
+    
+    <!--
+    ここからアイコン指定
+    <link rel="apple-touch-icon" href="/config/icons/app-icon-72x72.png" sizes="72x72">
+    <link rel="apple-touch-icon" href="/config/icons/app-icon-114x114.png" sizes="114x114">
+    <link rel="apple-touch-icon" href="/config/icons/app-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/config/icons/app-icon-144x144.png" sizes="144x144">
+    -->
   </head>
   <body>
+    <input type="file" id="file" onchange="showVR()"/>
+        
+    <a-assets>
+      <img id="sea" src="sea_360.jpg">
+    </a-assets>
+    
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sky id="image-360" radius="10" src="sea_360.jpg"></a-sky>
     </a-scene>
+    
+    <script>
+    	function showVR() {
+            let scene = document.createElement('a-scene');
+            let sky = document.createElement('a-sky');
+            sky.id = "image-360";
+            sky.radius = "10";
+            sky.src = document.getElementById("file").value;
+    		scene.appendChild(sky);
+            document.getElementById("file").remove();
+            document.body.appendChild(scene);
+        }
+    </script>
   </body>
 </html>
