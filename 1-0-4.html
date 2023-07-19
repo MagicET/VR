@@ -22,14 +22,17 @@
 
     <script>
     	function showVR() {
-            let scene = document.createElement('a-scene');
+            /*let scene = document.createElement('a-scene');
             let sky = document.createElement('a-sky');
             sky.id = "image-360";
             sky.radius = "10";
             sky.src = document.getElementById("file").value;
     		scene.appendChild(sky);
             document.getElementById("file").remove();
-            document.body.appendChild(scene);
+            document.body.appendChild(scene);*/
+						let image = document.createElement('image');
+          image.src = document.getElementById("file").value;
+          document.body.appendChild(image);
         }
     </script>
   </body>
