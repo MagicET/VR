@@ -18,10 +18,10 @@
     -->
   </head>
   <body>
-    <input type="file" id="file" accept="image/png, image/jpeg" onchange="showVR()"/>
+    <input type="file" id="file" accept="image/png, image/jpeg" onchange="OutputImage(this)"/>
 
     <script>
-    	function showVR() {
+    	/*function showVR() {
             /*let scene = document.createElement('a-scene');
             let sky = document.createElement('a-sky');
             sky.id = "image-360";
@@ -33,7 +33,25 @@
 						let image = document.createElement('image');
           image.src = document.getElementById("file").value;
           document.body.appendChild(image);
-        }
+        }*/
+        
+        function OutputImage(target) {
+    			// 2. ファイル読み込みクラス
+    			var reader = new FileReader();
+
+    			// 3. 読み込みクラスの準備が終わった後、画像の情報を設定
+    			reader.onload = function () {
+        		$sample2 = $("#sample2");
+
+        		// 4. Imageクラスを使ってdiv要素に画像のheightとwidthのサイズを設定
+        		img = document.createElement("image");
+        		img.src = this.result;
+            
+            document.body.appendChild(img);
+        	}
+    			// 6. 読み込んだ画像ファイルをURLに変換
+    			reader.readAsDataURL(target.files[0]);
+				}
     </script>
   </body>
 </html>
