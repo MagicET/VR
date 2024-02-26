@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <title>1D記念祭VR</title>
+    <title>AFrame VR Test</title>
     
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="記念祭VR">
+    <meta name="apple-mobile-web-app-title" content="AFrameVR">
     
     <!--
     ここからアイコン指定
@@ -18,12 +18,30 @@
     -->
   </head>
   <body>
-    <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+    <a-scene >
+      <a-sky id="image-360" radius="10" src=""></a-sky>
     </a-scene>
+    <dialog id="first">
+      <input type=text id="url" value="https://farm4.staticflickr.com/3746/9503927685_ce5bd3e1be_c.jpg" onchange="update()"/>
+      <button onclick="submit()">OK</button>
+    </dialog>
+
+    <script>
+      const dialog = document.getElementById("first");
+      const field = document.getElementById("url");
+      const sky = document.getElementById("image-360");
+
+      function submit() {
+        sky.setAttribute("src", field.value);
+        dialog.close();
+      }
+      
+      function update() {
+        sky.setAttribute("src", field.value);  
+      }
+      
+      dialog.showModal();
+      update();
+    </script>
   </body>
 </html>
